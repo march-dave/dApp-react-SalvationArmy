@@ -15,6 +15,8 @@ import $ from "jquery";
 import utf8 from "utf8";
 import ProductCarousel from "./container/ProductCarousel.js";
 import Search from "./Search";
+import moment from "moment";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -204,21 +206,23 @@ class App extends React.Component {
     });
   };
 
-  onSearch = (e) => {
+  onSearch = e => {
     this.setState({
       search: e.target.value
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div className="container-fluid">
-
-      <div id="events" style={{marginBottom: "10px"}}>
-          {this.state.events.map(c => {
+        <div
+          id="events"
+          style={{ marginBottom: "10px", backgroundColor: "#ccc", border: "2px solid gray", borderRadius: "5px" }}
+        >
+          {this.state.events.map( (c, i) => {
             return (
               <div>
-                {c.buyer} From Account {c.id} # donate to this program.
+                # {i} : {c.buyer} From Account {c.id} # donate to this location.
               </div>
             );
           })}
@@ -226,8 +230,13 @@ class App extends React.Component {
 
         {/* <Search /> */}
         <div className="inner-addon left-addon">
-          <i className="glyphicon glyphicon-user"></i>      
-          <input type="text" className="form-control" onChange={this.onSearch} placeholder="Location Search" />
+          <i className="glyphicon glyphicon-user" />
+          <input
+            type="text"
+            className="form-control"
+            onChange={this.onSearch}
+            placeholder="Location Search"
+          />
         </div>
 
         <div
@@ -263,56 +272,57 @@ class App extends React.Component {
         {/* image toggle based on true or false */}
 
         <div className="row">
-          {
-            data.filter(c => c.area.toLowerCase().indexOf(this.state.search) > -1).map((c, idx) => {
-            return (
-              <div className="col-sm-4 card-body panel-betterMarket">
-                <img
-                  className="card-img-top"
-                  ref={i => (this.pic[idx] = i)}
-                  src={c.picture}
-                  width="240"
-                />
-
-                <div className="card-body">
-                  <h5 className="card-title">{c.type}</h5>
-                  <p className="card-text">{c.note}</p>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                      ID: <span className="id">{c.id}</span>
-                    </li>
-                    <li className="list-group-item">
-                      Donate: <span className="price">{c.price}</span>
-                    </li>
-                    <li className="list-group-item">Area: {c.area}</li>
-                  </ul>
+          {data
+            .filter(c => c.area.toLowerCase().indexOf(this.state.search) > -1)
+            .map((c, idx) => {
+              return (
+                <div className="col-sm-4 card-body panel-betterMarket">
+                  <img
+                    className="card-img-top"
+                    ref={i => (this.pic[idx] = i)}
+                    src={c.picture}
+                    width="240"
+                  />
 
                   <div className="card-body">
-                    <button
-                      className="btn btn-info btn-buy"
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#buyModal"
-                      value={c.id}
-                    >
-                      Donate
-                    </button>{" "}
-                    &nbsp;
-                    <button
-                      className="btn btn-info btn-buyerInfo"
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#buyerInfoModal"
-                      value={c.id}
-                      style={{ display: "normal" }}
-                    >
-                      Donate Info
-                    </button>
+                    <h5 className="card-title">{c.type}</h5>
+                    <p className="card-text">{c.note}</p>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        ID: <span className="id">{c.id}</span>
+                      </li>
+                      <li className="list-group-item">
+                        Donate: <span className="price">{c.price}</span>
+                      </li>
+                      <li className="list-group-item">Area: {c.area}</li>
+                    </ul>
+
+                    <div className="card-body">
+                      <button
+                        className="btn btn-info btn-buy"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#buyModal"
+                        value={c.id}
+                      >
+                        Donate
+                      </button>{" "}
+                      &nbsp;
+                      <button
+                        className="btn btn-info btn-buyerInfo"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#buyerInfoModal"
+                        value={c.id}
+                        style={{ display: "normal" }}
+                      >
+                        Donate Info
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         <div
