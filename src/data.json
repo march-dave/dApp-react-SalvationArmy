@@ -1,0 +1,18 @@
+[{
+        "id": 0,
+        "type": "Change a Life",
+        "note": "Dig a little deeper this holiday season asks Salvation Army Christmas Kettle Campaign....",
+        "picture": "http://thenelsondaily.com/sites/default/files/styles/nelson_main/public/news_images/thenelsondaily/nov/salvation_army_kettle_drive.jpg?itok=ZTMw2sCy",
+        "area": "Ontario",
+        "price": 1.23
+    },
+    {
+        "id": 1,
+        "type": "The Salvation Army.",
+        "note": "The Salvation Army would like to thank the Saanich Fire Department for generously donating their emergency command unit to The Salvation Army’s Emergency Disaster Program.",
+        "picture": "https://salvationarmy.ca/britishcolumbia/files/2014/02/DSC01274.jpg",
+        "area": "British Columbia",
+        "price": 1.56
+    }
+
+]
