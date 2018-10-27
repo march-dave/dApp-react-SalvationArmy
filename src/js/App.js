@@ -214,7 +214,7 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
 
-      <div id="events">
+      <div id="events" style={{marginBottom: "10px"}}>
           {this.state.events.map(c => {
             return (
               <div>
@@ -225,7 +225,10 @@ class App extends React.Component {
         </div>
 
         {/* <Search /> */}
-        <input type="text" onChange={this.onSearch} />
+        <div className="inner-addon left-addon">
+          <i className="glyphicon glyphicon-user"></i>      
+          <input type="text" className="form-control" onChange={this.onSearch} placeholder="Location Search" />
+        </div>
 
         <div
           className="row"
@@ -261,7 +264,7 @@ class App extends React.Component {
 
         <div className="row">
           {
-            data.filter(c => c.area.indexOf(this.state.search) > -1).map((c, idx) => {
+            data.filter(c => c.area.toLowerCase().indexOf(this.state.search) > -1).map((c, idx) => {
             return (
               <div className="col-sm-4 card-body panel-betterMarket">
                 <img
