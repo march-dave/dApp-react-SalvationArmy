@@ -13,6 +13,13 @@
         "picture": "https://salvationarmy.ca/britishcolumbia/files/2014/02/DSC01274.jpg",
         "area": "British Columbia",
         "price": 1.56
+    },
+    {
+        "id": 2,
+        "type": "Doing the most good",
+        "note": "We turn our minds and our hearts to pray for unity.",
+        "picture": "https://pbs.twimg.com/profile_images/1031569786709454848/VKByoZ-O_400x400.jpg",
+        "area": "World Wide",
+        "price": 2.23
     }
-
 ]
