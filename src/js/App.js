@@ -365,7 +365,7 @@ class App extends React.Component {
           {this.state.events.map(c => {
             return (
               <div>
-                {c.buyer} From Account {c.id} # bought this product.
+                {c.buyer} From Account {c.id} # donate to this program.
               </div>
             );
           })}
