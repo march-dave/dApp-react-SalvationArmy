@@ -14,6 +14,7 @@ import Menu from "./Menu.js";
 import $ from "jquery";
 import utf8 from "utf8";
 import ProductCarousel from "./container/ProductCarousel.js";
+import Search from "./Search";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,8 @@ class App extends React.Component {
       buyerAddress: "",
       buyerName: "",
       buyerAge: "",
-      events: [{ buyer: "", id: "" }]
+      events: [{ buyer: "", id: "" }],
+      search: ""
     };
 
     this.pic = [];
@@ -123,19 +125,28 @@ class App extends React.Component {
                 $(".panel-betterMarket")
                   .eq(i)
                   .find("img")
-                  .attr("src", "https://ipfs.io/ipfs/QmY1oBSi5EttJQVnwkBNTZ233ZKVzPLWsWtBWxPEojVWcD");
+                  .attr(
+                    "src",
+                    "https://ipfs.io/ipfs/QmY1oBSi5EttJQVnwkBNTZ233ZKVzPLWsWtBWxPEojVWcD"
+                  );
                 break;
               case "QmZ799f5fXymwKRyXZHHGW52S512Mr3BwmunUAoMkeBLn4":
                 $(".panel-betterMarket")
                   .eq(i)
                   .find("img")
-                  .attr("src", "https://ipfs.io/ipfs/QmRzWoDoReXp4iSDRZ8QCwf5NW6eVxiwHnuLp4Ux3yPF4u");
+                  .attr(
+                    "src",
+                    "https://ipfs.io/ipfs/QmRzWoDoReXp4iSDRZ8QCwf5NW6eVxiwHnuLp4Ux3yPF4u"
+                  );
                 break;
               case "Qmd7gbpwWiMw5WJ3MiwLnfaoyVpcy5PMWBY9QdeUgwo5SA":
                 $(".panel-betterMarket")
                   .eq(i)
                   .find("img")
-                  .attr("src", "https://ipfs.io/ipfs/Qmdq7wms3rCaNagp9iN1naUK3PcipsFhx2iRCuoqCAUfP1");
+                  .attr(
+                    "src",
+                    "https://ipfs.io/ipfs/Qmdq7wms3rCaNagp9iN1naUK3PcipsFhx2iRCuoqCAUfP1"
+                  );
                 break;
             }
 
@@ -172,10 +183,15 @@ class App extends React.Component {
         .deployed()
         .then(instance => {
           let nameUtf8Encoded = utf8.encode(name);
-          return instance.buyBetterMarket(id, web3.toHex(nameUtf8Encoded), age, {
-            from: account,
-            value: price
-          });
+          return instance.buyBetterMarket(
+            id,
+            web3.toHex(nameUtf8Encoded),
+            age,
+            {
+              from: account,
+              value: price
+            }
+          );
         })
         .then(() => {
           $("#name").val("");
@@ -188,9 +204,19 @@ class App extends React.Component {
     });
   };
 
+  onSearch = (e) => {
+    this.setState({
+      search: e.target.value
+    })
+  }
+
   render() {
     return (
       <div className="container-fluid">
+
+        {/* <Search /> */}
+        <input type="text" onChange={this.onSearch} />
+
         <div
           className="row"
           // style={{ background: "#64b5f6", height: "50px", color: "#FFF" }}
@@ -224,7 +250,8 @@ class App extends React.Component {
         {/* image toggle based on true or false */}
 
         <div className="row">
-          {data.map((c, idx) => {
+          {
+            data.filter(c => c.area.indexOf(this.state.search) > -1).map((c, idx) => {
             return (
               <div className="col-sm-4 card-body panel-betterMarket">
                 <img
@@ -361,7 +388,7 @@ class App extends React.Component {
           </div>
         </div>
 
-         <div id="events">
+        <div id="events">
           {this.state.events.map(c => {
             return (
               <div>
@@ -370,7 +397,6 @@ class App extends React.Component {
             );
           })}
         </div>
-
       </div>
     );
   }
