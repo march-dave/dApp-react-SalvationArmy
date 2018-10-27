@@ -139,15 +139,15 @@ class App extends React.Component {
                 break;
             }
 
-            $(".panel-betterMarket")
-              .eq(i)
-              .find(".btn-buy")
-              .text("Sold")
-              .attr("disabled", true);
-            $(".panel-betterMarket")
-              .eq(i)
-              .find(".btn-buyerInfo")
-              .removeAttr("style");
+            // $(".panel-betterMarket")
+            //   .eq(i)
+            //   .find(".btn-buy")
+            //   .text("Sold")
+            //   .attr("disabled", true);
+            // $(".panel-betterMarket")
+            //   .eq(i)
+            //   .find(".btn-buyerInfo")
+            //   .removeAttr("style");
           }
         }
       })
