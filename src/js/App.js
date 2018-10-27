@@ -4,7 +4,6 @@ import Web3 from "web3";
 
 import TruffleContract from "truffle-contract";
 import BetterMarket from "../../build/contracts/BetterMarket.json";
-// import SmartPay from "../../build/contracts/SmartPay.json";
 import data from "../data.json";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
