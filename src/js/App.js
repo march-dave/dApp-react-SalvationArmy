@@ -214,6 +214,16 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
 
+      <div id="events">
+          {this.state.events.map(c => {
+            return (
+              <div>
+                {c.buyer} From Account {c.id} # donate to this program.
+              </div>
+            );
+          })}
+        </div>
+
         {/* <Search /> */}
         <input type="text" onChange={this.onSearch} />
 
@@ -388,7 +398,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div id="events">
+        {/* <div id="events">
           {this.state.events.map(c => {
             return (
               <div>
@@ -396,7 +406,7 @@ class App extends React.Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
     );
   }
