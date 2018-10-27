@@ -242,15 +242,6 @@ class App extends React.Component {
           })}
         </div>
         <LocationSearch />
-        {/* <div className="inner-addon left-addon">
-          <i className="glyphicon glyphicon-user" />
-          <input
-            type="text"
-            className="form-control"
-            onChange={this.onSearch}
-            placeholder="Location Search"
-          />
-        </div> */}
         <div
           className="row"
           // style={{ background: "#64b5f6", height: "50px", color: "#FFF" }}

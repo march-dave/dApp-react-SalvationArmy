@@ -1,5 +1,5 @@
 
-# Better Market - DAPP
+# The Salvation Army donatoin - DAPP
 To use ReactJS, Es6, & Webpack:
 
 # MVP Code
