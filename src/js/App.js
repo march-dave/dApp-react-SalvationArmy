@@ -14,8 +14,16 @@ import Menu from "./Menu.js";
 import $ from "jquery";
 import utf8 from "utf8";
 import ProductCarousel from "./container/ProductCarousel.js";
-import Search from "./Search";
+import LocationSearch from "./LocationSearch";
 import moment from "moment";
+
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    getlocationsearch: state.locationsearch
+  };
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -215,11 +223,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
+        {/* 1: {this.props.getlocationsearch} */}
         <div
           id="events"
-          style={{ marginBottom: "10px", backgroundColor: "#ccc", border: "2px solid gray", borderRadius: "5px" }}
+          style={{
+            marginBottom: "10px",
+            backgroundColor: "#ccc",
+            border: "2px solid gray",
+            borderRadius: "5px"
+          }}
         >
-          {this.state.events.map( (c, i) => {
+          {this.state.events.map((c, i) => {
             return (
               <div>
                 # {i} : {c.buyer} From Account {c.id} # donate to this location.
@@ -227,9 +241,8 @@ class App extends React.Component {
             );
           })}
         </div>
-
-        {/* <Search /> */}
-        <div className="inner-addon left-addon">
+        <LocationSearch />
+        {/* <div className="inner-addon left-addon">
           <i className="glyphicon glyphicon-user" />
           <input
             type="text"
@@ -237,8 +250,7 @@ class App extends React.Component {
             onChange={this.onSearch}
             placeholder="Location Search"
           />
-        </div>
-
+        </div> */}
         <div
           className="row"
           // style={{ background: "#64b5f6", height: "50px", color: "#FFF" }}
@@ -258,7 +270,6 @@ class App extends React.Component {
             {/* <div style={{ paddingTop: "7px" }}>Login</div> */}
           </div>
         </div>
-
         {/* <div id="events">
           {this.state.events.map(c => {
             return (
@@ -268,12 +279,14 @@ class App extends React.Component {
             );
           })}
         </div> */}
-
         {/* image toggle based on true or false */}
-
+        {/* 1: {this.props.getlocationsearch} */}
         <div className="row">
           {data
-            .filter(c => c.area.toLowerCase().indexOf(this.state.search) > -1)
+            .filter(
+              c =>
+                c.area.toLowerCase().indexOf(this.props.getlocationsearch) > -1
+            )
             .map((c, idx) => {
               return (
                 <div className="col-sm-4 card-body panel-betterMarket">
@@ -324,7 +337,6 @@ class App extends React.Component {
               );
             })}
         </div>
-
         <div
           className="modal fade"
           role="dialog"
@@ -374,7 +386,6 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-
         <div
           className="modal fade"
           role="dialog"
@@ -410,7 +421,6 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-
         {/* <div id="events">
           {this.state.events.map(c => {
             return (
@@ -424,5 +434,10 @@ class App extends React.Component {
     );
   }
 }
+
+App = connect(
+  mapStateToProps,
+  null
+)(App);
 
 export default App;
