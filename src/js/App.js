@@ -242,7 +242,7 @@ class App extends React.Component {
                       ID: <span className="id">{c.id}</span>
                     </li>
                     <li className="list-group-item">
-                      Price: <span className="price">{c.price}</span>
+                      Donate: <span className="price">{c.price}</span>
                     </li>
                     <li className="list-group-item">Area: {c.area}</li>
                   </ul>
