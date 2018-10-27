@@ -7,7 +7,6 @@ import BetterMarket from "../../build/contracts/BetterMarket.json";
 import data from "../data.json";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-// import { Route } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "../styles/app.css";
 
@@ -118,8 +117,6 @@ class App extends React.Component {
               .find("img")
               .attr("src")
               .substr(21);
-
-              console.log('imgType: ' + imgType);
 
             switch (imgType) {
               case "QmaA49MkdTD5wQmYQz3jABUmjaS7nHJXt7Hdh6Tkw1912u":
@@ -258,7 +255,7 @@ class App extends React.Component {
                       data-target="#buyModal"
                       value={c.id}
                     >
-                      Buy
+                      Donate
                     </button>{" "}
                     &nbsp;
                     <button
@@ -269,7 +266,7 @@ class App extends React.Component {
                       value={c.id}
                       style={{ display: "normal" }}
                     >
-                      Buyer Info
+                      Donate Info
                     </button>
                   </div>
                 </div>
